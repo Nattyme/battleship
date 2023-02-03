@@ -103,7 +103,7 @@ function handleFireButton () {
 	var guessInput = document.getElementById("guessInput");
 	var guess = guessInput.value;
 	controller.processGuess(guess);
-	guess.value = "";
+	guessInput.value = "";
 }
 
 window.onload = init;
