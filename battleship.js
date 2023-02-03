@@ -94,3 +94,16 @@ var controller = {
 };
 
 
+function init() {
+	var fireButton = document.getElementById("fireButton");
+	fireButton.onclick = handleFireButton;
+}
+
+function handleFireButton () {
+	var guessInput = document.getElementById("guessInput");
+	var guess = guessInput.value;
+	controller.processGuess(guess);
+	guess.value = "";
+}
+
+window.onload = init;
