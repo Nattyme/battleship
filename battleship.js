@@ -57,5 +57,30 @@ var model = {
 	
 };
 
+var controller = {
+	guesses: 0,
+	
+	processGuess: function(guess){
+		
+	}
+};
 
-
+function parseGuess(guess) {
+	var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+	if(guess === null || guess.length !== 2) {
+		alert("Please enter a letter and a number on the board");
+	} else {
+		firstChar = guess.charAt(0);
+		var row = alphabet.indexOf(firstChar);
+		var column = guess.charAt(1);
+		
+		if(isNan(row) || isNan(column) {
+			alert("That isn't on the board");
+		} else if (row < 0 || row >= model.boardSize || column <0 || column >= model.boardSize){
+			alert("That's off the board!");
+		} else {
+			return row + column;
+		}
+		return null;
+	}
+}
