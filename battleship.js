@@ -1,16 +1,17 @@
+// Сообщение пользователю 
 let view = {
-displayMessage: function (msg) {
+	displayMessage: function (msg) {
 		let messageArea = document.getElementById ("messageArea");
 		messageArea.innerHTML = msg;
 	},
-displayHit: function(location) {
+	displayHit: function(location) {
 	let cell = document.getElementById(location);
 	cell.setAttribute("class", "hit");
-},
-displayMiss: function (location) {
-	let cell = document.getElementById (location);
-cell.setAttribute("class", "miss");
-}	
+	},
+	displayMiss: function (location) {
+		let cell = document.getElementById (location);
+		cell.setAttribute("class", "miss");
+	}	
 };
 
 let model = {
@@ -21,15 +22,15 @@ let model = {
 	
 	ships: [
 	{locations: [0, 0, 0], hits: ["", "", ""]},
-		{locations: [0, 0, 0], hits: ["", "", ""]},
-			{locations: [0, 0, 0], hits: ["", "", ""]}
+	{locations: [0, 0, 0], hits: ["", "", ""]},
+	{locations: [0, 0, 0], hits: ["", "", ""]}
 	],
 	
+	// Выстрел
 	fire: function (guess) {
-		
-		for(let i = 0; i < this.numShips; i++){
+		for (let i = 0; i  < this.numShips; i++){
 			let ship = this.ships[i];
-			let index = ship.locations.indexOf (guess);
+			let index = ship.locations.indexOf(guess);
 			if(index >=0){
 				ship.hits[index] = "hit";
 				view.displayHit(guess);
@@ -41,13 +42,13 @@ let model = {
 				return true;
 			}
 		}
-			view.displayMiss (guess);
-			view.displayMessage ("You missed.");
-			return false;
+		view.displayMiss (guess);
+		view.displayMessage ("You missed.");
+		return false;
 	},
 	
 	isSunk: function (ship) {
-		for (let i = 0; i < this.shipLength; i++){
+		for (let i = 0; i < this.shipLength; i++) {
 			if(ship.hits[i] !== "hit") {
 				return false;
 			}
@@ -70,18 +71,22 @@ let model = {
 	let row, col;
 	
 	if(direction === 1){
+		// Сгенерировать начальную позицию для горизонтального корабля
 		row = Math.floor(Math.random() * this.boardSize);
-			col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
+		col = Math.floor(Math.random() * (this.boardSize - this.shipLength));
 	} else {
+		// Сгенерировать начальную позицию для вертикального корабля
 		row = Math.floor(Math.random() * (this.boardSize - this.shipLength));
-			col = Math.floor(Math.random() * this.boardSize);
+		col = Math.floor(Math.random() * this.boardSize);
 	}
 	
-	let newShipLocations = [];
+	let newShipLocations = []; //Набор позиций нового корабля
 	for(let i = 0; i < this.shipLength; i++) {
 		if (direction === 1) {
+			// Добавить в массив для горизонтального корабля
 			newShipLocations.push(row + "" + (col + i));
 		} else {
+			//Добавить в массив для вертикального корабля
 			newShipLocations.push((row + i) + "" + col);
 		}
 	}
@@ -140,7 +145,7 @@ let controller = {
 function init() {
 	let fireButton = document.getElementById("fireButton");
 	fireButton.onclick = handleFireButton;
-	let guessInput = document.getElementByID("guessInput");
+	let guessInput = document.getElementById("guessInput");
 	guessInput.onkeypress = handleKeyPress;
 	
 	model.generateShipLocations();
@@ -150,9 +155,8 @@ function handleKeyPress (e){
 	let fireButton = document.getElementById("fireButton");
 	if(e.keyCode === 13){
 		fireButton.click();
-		return false;
-		
 	}
+	return false;	
 }
 
 function handleFireButton () {
