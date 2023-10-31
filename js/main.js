@@ -94,9 +94,9 @@ let model = {
 },
 
 	collision: function (locations) {
-		for(let i = 0; i< this.numShips; i++) {
+		for(let i = 0; i < this.numShips; i++) {
 			let ship = model.ships[i];
-			for(let j = 0; j< locations.length; j++) {
+			for(let j = 0; j < locations.length; j++) {
 				if(ship.locations.indexOf(locations[j]) >= 0) {
 					return true;
 				}
@@ -133,7 +133,7 @@ let controller = {
 		let location = phraseGuess(guess);
 		if(location) {
 			this.guesses++;
-			let hit = model.fire (location);
+			let hit = model.fire(location);
 			if (hit && model.shipsSunk === model.numShips) {
 				view.displayMessage ("You sank all my battleships, in " + this.guesses + " guesses");
 			}
@@ -151,6 +151,7 @@ function init() {
 	model.generateShipLocations();
 }
 
+//Активируем  "Fire", если нажат Enter
 function handleKeyPress (e){
 	let fireButton = document.getElementById("fireButton");
 	if(e.keyCode === 13){
