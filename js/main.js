@@ -146,7 +146,7 @@ function init() {
 	let fireButton = document.getElementById("fireButton");
 	fireButton.onclick = handleFireButton;
 	let guessInput = document.getElementById("guessInput");
-	guessInput.onkeypress = handleKeyPress;
+	guessInput.onKeyDown = handleKeyPress;
 	
 	model.generateShipLocations();
 }
