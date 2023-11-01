@@ -1,7 +1,7 @@
 // Сообщение пользователю 
 let view = {
 	displayMessage: function (msg) {
-		let messageArea = document.getElementById ("messageArea");
+		let messageArea = document.getElementById("messageArea");
 		messageArea.innerHTML = msg;
 	},
 	displayHit: function(location) {

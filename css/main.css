@@ -3,36 +3,50 @@ body {
 background-color: black;
 }
 
-div#board {
+.container {
 position: relative;
 width: 1024px;
 height: 863px;
 margin: auto;
-background: url("./../img/board.jpg") no-repeat;
+/* background: url("./../img/board.jpg") no-repeat; */
 }
 
 div#messageArea {
 position: absolute;
 top: 0px;
 left: 0px;
-color: rgb(83, 175, 19);
+color: white;
 }
 
 table{
-position: absolute;
+position: absolute; 
 left: 173px;
 top: 98px;
-border-spacing: 0px;
+/* border-spacing: 0px; */
+border: 2px solid rgb(83, 175, 19);
+border-collapse: collapse;
 }
 
 td {
 width: 94px;
 height: 94px;
+border: 2px solid rgb(83, 175, 19);
+}
+
+th {
+    width: 94px;
+    height: 74px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(84, 84, 87);
+    border: 2px solid rgb(80, 217, 30); 
 }
 
 form {
 position: absolute;
-bottom: 0px;
+top: 0px;
 right: 0px;
 padding: 15px;
 background-color: rgb(83, 175, 19);
